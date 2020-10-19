@@ -1,0 +1,7 @@
+FROM mysql:5.6
+ENV MYSQL_ROOT_PASSWORD Mm4bRBeQK5Ft4uzR
+ENV MYSQL_DATABASE tracker_schema
+ENV MYSQL_USER tracker_admin
+ENV MYSQL_PASSWORD busses
+ADD db-initialiser.sql /docker-entrypoint-initdb.d
+EXPOSE 3306
