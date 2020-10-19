@@ -11,8 +11,8 @@ import bustracker.models.Stop;
 public class DatabaseManager {
 
     private static final String url = "jdbc:mysql://localhost:3306/tracker_schema";
-    private static final String username = "tracker_admin";
-    private static final String password = "busses";
+    private static String username = "";
+    private static String password = "";
 
     private Connection conn;
     private Statement stmt;
