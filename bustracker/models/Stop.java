@@ -1,7 +1,9 @@
 package bustracker.models;
 
+import org.json.JSONObject;
+
 public class Stop {
-    
+
     private String id;
     private int code;
     private String name;
@@ -19,11 +21,29 @@ public class Stop {
     }
 
     public Stop() {
+        this.id = null;
+        this.code = -1;
+        this.name = null;
+        this.lat = -1.0f;
+        this.lng = -1.0f;
+        this.geom = null;
     }
-    
-    
 
-	public String getId() {
+    /**
+     * Constructs a Stop object from a json object provided by the AT API
+     * 
+     * @param jsonStop
+     */
+    public Stop(JSONObject jsonStop) {
+        this.setId(jsonStop.getString("stop_id"));
+        this.setCode(jsonStop.getInt("stop_code"));
+        this.setName(jsonStop.getString("stop_name"));
+        this.setLat(jsonStop.getFloat("stop_lat"));
+        this.setLng(jsonStop.getFloat("stop_lon"));
+        this.setGeom(jsonStop.getString("the_geom"));
+    }
+
+    public String getId() {
         return id;
     }
 
@@ -73,12 +93,7 @@ public class Stop {
 
     @Override
     public String toString() {
-        return "Stop:\n" + 
-                "\nid: " + id + 
-                "\ncode: " + code + 
-                "\nname: " + name +
-                "\nlat: " + lat + 
-                "\nlng: " + lng + 
-                "\ngeom: " + geom;
+        return "Stop:\n" + "\nid: " + id + "\ncode: " + code + "\nname: " + name + "\nlat: " + lat + "\nlng: " + lng
+                + "\ngeom: " + geom;
     }
 }
